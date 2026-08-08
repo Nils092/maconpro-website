@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maconpro GmbH — Management Consulting &amp; Projektbegleitung</title>
+<meta name="description" content="Maconpro GmbH begleitet Unternehmen bei Planung und Umsetzung — Management Consulting, Projektbegleitung und eigene Tools, die den Arbeitsalltag automatisieren.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --paper:#28323E;
+  --card:#333F4C;
+  --ink:#F3F7FB;
+  --petrol:#5AC2BF;
+  --petrol-bright:#76D6D2;
+  --petrol-deep:#1E313E;
+  --brass:#EEB674;
+  --brass-bright:#F8C98A;
+  --analyse:#E38089;
+  --analyse-bright:#EE9AA3;
+  --brass-on-dark:#EEB674;
+  --analyse-on-dark:#EE9AA3;
+  --muted:#ABB9C7;
+  --line:#3F4C5A;
+  --on-deep:#F3F7FB;
+
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'Public Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --pad:clamp(1.25rem,5vw,5rem);
+  --maxw:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(1rem,0.96rem + 0.2vw,1.075rem);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--display);font-variation-settings:'wdth' 112;margin:0;line-height:1.05;letter-spacing:-0.015em}
+p{margin:0}
+a{color:inherit}
+ul,ol{margin:0;padding:0;list-style:none}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:1rem;top:1rem;z-index:99;background:var(--ink);color:var(--paper);padding:.6rem 1rem}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* ---------- Kopfzeile ---------- */
+.topbar{
+  position:sticky;top:0;z-index:40;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+.mark{font-family:var(--mono);font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;font-weight:500}
+.mark span{color:var(--brass)}
+.topnav{display:flex;gap:1.75rem;font-size:.88rem}
+.topnav a{text-decoration:none;color:var(--muted);padding-block:.35rem;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.topnav a:hover{color:var(--ink);border-color:var(--brass)}
+.topnav a.active{color:var(--ink);border-color:var(--brass)}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--petrol-bright),var(--brass))}
+.section-label{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);display:none}
+@media(max-width:760px){.section-label{display:block}}
+@media(max-width:760px){.topnav{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{padding-block:clamp(3.5rem,9vw,6.5rem) clamp(3rem,7vw,5rem);position:relative;overflow:hidden;isolation:isolate}
+.hero > .wrap{position:relative;z-index:2}
+/* Blickfang 1: feines Blaupausen-Raster */
+.hero::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(color-mix(in srgb,var(--petrol) 10%,transparent) 1px,transparent 1px),
+    linear-gradient(90deg,color-mix(in srgb,var(--petrol) 10%,transparent) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(ellipse 85% 65% at 50% 0%,#000 25%,transparent 78%);
+  mask-image:radial-gradient(ellipse 85% 65% at 50% 0%,#000 25%,transparent 78%);
+}
+/* Blickfang 2: weicher Lichtschein hinter der Überschrift */
+.hero::after{
+  content:'';position:absolute;left:50%;top:-14rem;z-index:1;
+  width:min(66rem,140vw);height:34rem;transform:translateX(-50%);
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--petrol) 20%,transparent),transparent 72%);
+  pointer-events:none;
+}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.6rem}
+.eyebrow b{color:var(--petrol);font-weight:500}
+h1{font-size:clamp(2.5rem,1.4rem + 5vw,5rem);font-weight:800;max-width:16ch}
+h1 em{
+  font-style:normal;font-variation-settings:'wdth' 100;
+  background:linear-gradient(100deg,var(--petrol-bright) 0%,var(--brass) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.lede{margin-top:1.6rem;max-width:56ch;font-size:clamp(1.05rem,1rem + .35vw,1.28rem);color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2.25rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.9rem 1.6rem;border-radius:2px;text-decoration:none;
+  font-weight:600;font-size:.95rem;border:1px solid transparent;
+  transition:background .2s,color .2s,border-color .2s,transform .2s,box-shadow .2s;
+}
+.btn-primary{background:var(--brass);color:#0F151C;border-color:var(--brass);box-shadow:0 6px 20px -10px color-mix(in srgb,var(--brass) 80%,transparent)}
+.btn-primary:hover{background:var(--brass-bright);border-color:var(--brass-bright);transform:translateY(-2px);box-shadow:0 12px 28px -10px color-mix(in srgb,var(--brass) 75%,transparent)}
+.btn-ghost{background:transparent;color:var(--petrol-bright);border-color:var(--petrol-bright)}
+.btn-ghost:hover{background:var(--petrol);color:#0F151C;transform:translateY(-2px)}
+
+/* ---------- Signature: Projektplan ---------- */
+.plan{margin-top:clamp(3rem,7vw,5rem);border-top:1px solid var(--line);padding-top:1.25rem}
+.plan-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.plan-head p{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.plan-row{display:grid;grid-template-columns:minmax(9.5rem,15rem) 1fr;gap:1.25rem;align-items:center;padding-block:.7rem;border-bottom:1px solid var(--line)}
+.plan-row:last-child{border-bottom:0}
+.plan-label{display:flex;align-items:baseline;gap:.7rem;font-weight:600;font-size:.98rem;
+  background:none;border:0;padding:0;margin:0;color:inherit;font-family:inherit;text-align:left;cursor:pointer;
+  transition:color .2s}
+.plan-label:hover{color:var(--brass)}
+.plan-label i{font-family:var(--mono);font-style:normal;font-size:.74rem;color:var(--brass)}
+.plan-track{display:grid;grid-template-columns:repeat(12,1fr);align-items:center;min-height:1.6rem;position:relative}
+.plan-track::before{
+  content:'';position:absolute;inset-inline:0;top:50%;height:1px;
+  background:repeating-linear-gradient(90deg,var(--line) 0 4px,transparent 4px 9px);
+}
+.plan-bar{
+  grid-column:var(--from) / var(--to);
+  height:.65rem;border-radius:1px;background:var(--bar,var(--petrol));position:relative;
+  transform:scaleX(0);transform-origin:left center;
+  animation:draw .7s cubic-bezier(.2,.7,.3,1) forwards;
+  animation-delay:calc(var(--i) * 140ms + 250ms);
+}
+.plan-track{cursor:pointer}
+.plan-handle{
+  position:absolute;right:-.52rem;top:50%;
+  width:1.05rem;height:1.05rem;padding:0;border:0;border-radius:2px;
+  background:var(--brass);cursor:ew-resize;touch-action:none;
+  transform:translateY(-50%) rotate(45deg);
+  opacity:0;animation:pop .3s ease forwards;
+  animation-delay:calc(var(--i) * 140ms + 1000ms);
+  transition:background .15s;
+}
+.plan-handle:hover,.plan-handle:focus-visible{background:var(--brass-bright);box-shadow:0 0 0 4px color-mix(in srgb,var(--brass) 25%,transparent)}
+.plan-row:hover .plan-bar,.plan-row:focus-within .plan-bar{background:var(--bar-hover,var(--brass))}
+.plan-row--analyse{--bar:var(--analyse);--bar-hover:var(--analyse-bright)}
+.plan-row--analyse .plan-label{color:var(--analyse)}
+.plan-row--analyse .plan-label i{color:var(--analyse)}
+.plan-row--analyse .plan-handle{background:var(--analyse-bright)}
+@keyframes pop{to{opacity:1}}
+.plan-foot{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-top:1.4rem}
+.plan-note{font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.04em}
+.plan-total{font-family:var(--mono);font-size:.78rem;color:var(--brass);letter-spacing:.04em}
+.plan-reset{background:none;border:0;padding:0;font:inherit;color:var(--muted);text-decoration:underline;cursor:pointer}
+.plan-reset:hover{color:var(--ink)}
+.plan-warn{margin-top:.8rem;font-size:.92rem;color:var(--brass-bright);max-width:62ch}
+@keyframes draw{to{transform:scaleX(1)}}
+@media(max-width:700px){
+  .plan-row{grid-template-columns:1fr;gap:.55rem}
+}
+
+/* ---------- Abschnitte ---------- */
+section{scroll-margin-top:80px}
+.band{padding-block:clamp(3.5rem,8vw,6rem);border-top:1px solid var(--line)}
+.band--deep{background:var(--petrol-deep);color:var(--on-deep);border-top:0}
+.band--deep .shead p,.band--deep .muted{color:color-mix(in srgb,var(--on-deep) 68%,transparent)}
+.shead{margin-bottom:clamp(2rem,4vw,3rem);max-width:62ch}
+.shead p{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+.shead h2{font-size:clamp(1.75rem,1.3rem + 1.8vw,2.75rem);font-weight:700}
+
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));gap:1.25rem}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:3px;
+  padding:clamp(1.5rem,3vw,2.25rem);position:relative;overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.card::before{
+  content:'';position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,var(--petrol),var(--brass));
+  opacity:0;transition:opacity .3s ease;
+}
+.card:hover{
+  transform:translateY(-5px);
+  border-color:color-mix(in srgb,var(--petrol) 40%,var(--line));
+  box-shadow:0 26px 50px -28px rgba(0,0,0,.85);
+}
+.card:hover::before{opacity:1}
+.card h3{font-size:1.3rem;font-weight:700;margin-bottom:.75rem}
+.card > p{color:var(--muted);margin-bottom:1.5rem}
+.card li{padding:.62rem 0 .62rem 1.35rem;border-top:1px solid var(--line);position:relative;font-size:.95rem}
+.card li::before{content:'';position:absolute;left:0;top:1.08rem;width:.42rem;height:.42rem;background:var(--brass);transform:rotate(45deg)}
+
+/* Blickfang 5: laufende Schlagwortleiste */
+.ticker{
+  border-block:1px solid var(--line);
+  padding-block:.9rem;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+.ticker-track{
+  display:flex;width:max-content;gap:0;
+  animation:ticker-run 38s linear infinite;
+}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-set{display:flex;align-items:center;gap:2.5rem;padding-right:2.5rem}
+.ticker-set span{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap;
+}
+.ticker-set b{color:var(--petrol);font-weight:400}
+@keyframes ticker-run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+/* ---------- Vorgehen: schwebendes Fenster ---------- */
+.stage{display:flex;justify-content:center}
+.stage-card{
+  position:relative;width:min(100%,44rem);
+  background:color-mix(in srgb,var(--on-deep) 9%,var(--petrol-deep));
+  border:1px solid color-mix(in srgb,var(--on-deep) 18%,transparent);
+  border-radius:8px;overflow:hidden;
+  box-shadow:0 42px 72px -32px rgba(0,0,0,.7);
+  animation:stage-float 6.5s ease-in-out infinite;
+}
+.stage-meter{height:2px;background:color-mix(in srgb,var(--on-deep) 15%,transparent)}
+.stage-meter span{display:block;height:100%;width:0;background:var(--brass-on-dark)}
+@keyframes stage-fill{from{width:0}to{width:100%}}
+@keyframes stage-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.stage-body{display:grid;padding:clamp(1.6rem,4vw,2.6rem)}
+.stage-panel{grid-area:1/1;opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease;pointer-events:none}
+.stage-panel.is-active{opacity:1;transform:none;pointer-events:auto}
+.stage-step{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-on-dark);margin-bottom:.9rem}
+.stage-panel h3{font-size:clamp(1.25rem,1.1rem + .6vw,1.6rem);margin-bottom:.7rem}
+.stage-text{font-size:1.02rem;line-height:1.6;max-width:52ch}
+.stage-panel .out{margin-top:1.1rem;font-family:var(--mono);font-size:.76rem;letter-spacing:.05em;color:color-mix(in srgb,var(--on-deep) 78%,transparent)}
+
+.stage-nav{display:flex;gap:.5rem;flex-wrap:wrap;padding:0 clamp(1.6rem,4vw,2.6rem) clamp(1.4rem,3vw,2rem)}
+.stage-dot{
+  background:none;border:1px solid color-mix(in srgb,var(--on-deep) 25%,transparent);
+  color:color-mix(in srgb,var(--on-deep) 68%,transparent);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  padding:.42rem .8rem;border-radius:2px;cursor:pointer;transition:background .2s,border-color .2s,color .2s;
+}
+.stage-dot:hover{color:var(--on-deep);border-color:var(--on-deep)}
+.stage-dot.is-on{background:var(--brass-on-dark);border-color:var(--brass-on-dark);color:var(--petrol-deep);font-weight:600}
+
+@media(prefers-reduced-motion:reduce){
+  .stage-card{animation:none}
+  .stage-panel{transition:none}
+}
+.phase h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
+.phase p{max-width:62ch}
+.phase .out{margin-top:.9rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.05em;color:color-mix(in srgb,var(--on-deep) 62%,transparent)}
+@media(max-width:600px){.phase{grid-template-columns:1fr;gap:.5rem}}
+
+.who{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.who > div{background:var(--card);padding:clamp(1.4rem,3vw,2rem)}
+.who h3{font-size:1.05rem;font-weight:700;margin-bottom:.55rem}
+.who p{color:var(--muted);font-size:.94rem}
+
+.cta{position:relative;display:inline-block}
+.cta-tip{
+  position:absolute;bottom:calc(100% + .7rem);left:50%;
+  transform:translate(-50%,7px);
+  background:var(--card);color:var(--ink);
+  border:1px solid var(--brass);border-radius:3px;
+  padding:.55rem .85rem;white-space:nowrap;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;line-height:1.4;
+  opacity:0;pointer-events:none;z-index:5;
+  box-shadow:0 14px 34px -14px rgba(26,36,48,.16);
+  transition:opacity .22s ease,transform .22s ease;
+}
+.cta-tip::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:var(--brass);
+}
+@media(hover:hover){
+  .cta:hover .cta-tip{opacity:1;transform:translate(-50%,0)}
+}
+.cta:focus-within .cta-tip{opacity:1;transform:translate(-50%,0)}
+@media(max-width:620px){
+  .cta-tip{white-space:normal;width:min(76vw,19rem);text-align:center}
+}
+
+/* ---------- Bildfenster: schwebend, wechselnd ---------- */
+.shots{display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vw,3.5rem);align-items:center}
+@media(min-width:900px){.shots{grid-template-columns:1fr minmax(20rem,26rem)}}
+
+.shot-frame{
+  position:relative;width:100%;aspect-ratio:3/4;
+  border-radius:10px;overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--petrol) 25%,var(--line));
+  box-shadow:0 50px 80px -36px rgba(0,0,0,.85);
+  animation:shot-float 7s ease-in-out infinite;
+  background:var(--card);
+}
+@keyframes shot-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.shot-frame img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transform:scale(1.06);
+  transition:opacity .9s ease,transform 7s ease-out;
+}
+.shot-frame img.is-on{opacity:1;transform:scale(1)}
+
+/* Sanfter Farbschleier, damit die Bilder zur Palette passen */
+.shot-frame::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 45%,color-mix(in srgb,var(--paper) 55%,transparent) 100%);
+}
+
+.shot-caption{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:1.1rem 1.2rem;
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;
+  color:var(--on-deep);
+}
+.shot-dots{display:flex;gap:.45rem;margin-top:1.75rem}
+.shot-dot{
+  width:2.2rem;height:3px;border:0;padding:0;cursor:pointer;border-radius:2px;
+  background:color-mix(in srgb,var(--ink) 22%,transparent);transition:background .3s ease;
+}
+.shot-dot.is-on{background:var(--petrol)}
+.shot-dot:hover{background:var(--petrol-bright)}
+
+@media(prefers-reduced-motion:reduce){
+  .shot-frame{animation:none}
+  .shot-frame img{transition:opacity .3s ease;transform:none}
+  .shot-frame img.is-on{transform:none}
+}
+
+/* Blickfang 5: laufende Schlagwortleiste */
+.ticker{
+  border-block:1px solid var(--line);
+  padding-block:.9rem;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+.ticker-track{
+  display:flex;width:max-content;gap:0;
+  animation:ticker-run 38s linear infinite;
+}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-set{display:flex;align-items:center;gap:2.5rem;padding-right:2.5rem}
+.ticker-set span{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap;
+}
+.ticker-set b{color:var(--petrol);font-weight:400}
+@keyframes ticker-run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+/* ---------- Vorgehen: schwebendes Fenster ---------- */
+.stage{display:flex;justify-content:center}
+.stage-card{
+  position:relative;width:min(100%,44rem);
+  background:color-mix(in srgb,var(--on-deep) 9%,var(--petrol-deep));
+  border:1px solid color-mix(in srgb,var(--on-deep) 18%,transparent);
+  border-radius:8px;overflow:hidden;
+  box-shadow:0 42px 72px -32px rgba(0,0,0,.7);
+  animation:stage-float 6.5s ease-in-out infinite;
+}
+.stage-meter{height:2px;background:color-mix(in srgb,var(--on-deep) 15%,transparent)}
+.stage-meter span{display:block;height:100%;width:0;background:var(--brass-on-dark)}
+@keyframes stage-fill{from{width:0}to{width:100%}}
+@keyframes stage-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.stage-body{display:grid;padding:clamp(1.6rem,4vw,2.6rem)}
+.stage-panel{grid-area:1/1;opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease;pointer-events:none}
+.stage-panel.is-active{opacity:1;transform:none;pointer-events:auto}
+.stage-step{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-on-dark);margin-bottom:.9rem}
+.stage-panel h3{font-size:clamp(1.25rem,1.1rem + .6vw,1.6rem);margin-bottom:.7rem}
+.stage-text{font-size:1.02rem;line-height:1.6;max-width:52ch}
+.stage-panel .out{margin-top:1.1rem;font-family:var(--mono);font-size:.76rem;letter-spacing:.05em;color:color-mix(in srgb,var(--on-deep) 78%,transparent)}
+
+.stage-nav{display:flex;gap:.5rem;flex-wrap:wrap;padding:0 clamp(1.6rem,4vw,2.6rem) clamp(1.4rem,3vw,2rem)}
+.stage-dot{
+  background:none;border:1px solid color-mix(in srgb,var(--on-deep) 25%,transparent);
+  color:color-mix(in srgb,var(--on-deep) 68%,transparent);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  padding:.42rem .8rem;border-radius:2px;cursor:pointer;transition:background .2s,border-color .2s,color .2s;
+}
+.stage-dot:hover{color:var(--on-deep);border-color:var(--on-deep)}
+.stage-dot.is-on{background:var(--brass-on-dark);border-color:var(--brass-on-dark);color:var(--petrol-deep);font-weight:600}
+
+@media(prefers-reduced-motion:reduce){
+  .stage-card{animation:none}
+  .stage-panel{transition:none}
+}
+.phase h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
+.phase p{max-width:62ch}
+.phase .out{margin-top:.9rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.05em;color:color-mix(in srgb,var(--on-deep) 62%,transparent)}
+@media(max-width:600px){.phase{grid-template-columns:1fr;gap:.5rem}}
+
+.who{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.who > div{background:var(--card);padding:clamp(1.4rem,3vw,2rem)}
+.who h3{font-size:1.05rem;font-weight:700;margin-bottom:.55rem}
+.who p{color:var(--muted);font-size:.94rem}
+
+.cta{position:relative;display:inline-block}
+.cta-tip{
+  position:absolute;bottom:calc(100% + .7rem);left:50%;
+  transform:translate(-50%,7px);
+  background:var(--card);color:var(--ink);
+  border:1px solid var(--brass);border-radius:3px;
+  padding:.55rem .85rem;white-space:nowrap;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;line-height:1.4;
+  opacity:0;pointer-events:none;z-index:5;
+  box-shadow:0 14px 34px -14px rgba(26,36,48,.16);
+  transition:opacity .22s ease,transform .22s ease;
+}
+.cta-tip::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:var(--brass);
+}
+@media(hover:hover){
+  .cta:hover .cta-tip{opacity:1;transform:translate(-50%,0)}
+}
+.cta:focus-within .cta-tip{opacity:1;transform:translate(-50%,0)}
+@media(max-width:620px){
+  .cta-tip{white-space:normal;width:min(76vw,19rem);text-align:center}
+}
+
+/* ---------- Kontakt ---------- */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:clamp(2rem,5vw,4rem);align-items:start}
+.contact h2{font-size:clamp(1.9rem,1.3rem + 2.2vw,3rem);font-weight:800;max-width:14ch}
+.dl{margin-top:1.75rem}
+.dl div{display:flex;gap:1.25rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.dl dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);min-width:6.5rem;padding-top:.15rem}
+.dl dd{margin:0;font-weight:500}
+.dl a{text-decoration:none;border-bottom:1px solid var(--brass)}
+
+footer{border-top:1px solid var(--line);padding-block:2.25rem;font-size:.85rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between}
+footer a{text-decoration:none;border-bottom:1px solid transparent}
+footer a:hover{border-color:var(--brass);color:var(--ink)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .plan-bar{transform:scaleX(1)}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="mark" href="#start">Maconpro<span>.</span></a>
+    <nav class="topnav" aria-label="Hauptnavigation">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#vorgehen">Vorgehen</a>
+      <a href="#einblicke">Einblicke</a>
+      <a href="#zielgruppen">Für wen</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <span class="section-label" id="sectionLabel" aria-hidden="true">Start</span>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main id="inhalt">
+
+  <!-- HERO -->
+  <section class="hero" id="start" data-label="Start">
+    <div class="wrap">
+      <p class="eyebrow"><b>Maconpro GmbH</b> · Management Consulting &amp; Projektbegleitung</p>
+      <h1>Aus Vorhaben werden <em>Pläne, die halten.</em></h1>
+      <p class="lede">Wir begleiten Unternehmen bei Planung und Umsetzung — und bauen anschließend die Werkzeuge, die den Arbeitsalltag spürbar leichter machen.</p>
+      <div class="actions">
+        <span class="cta"><span class="cta-tip" aria-hidden="true">Fragen kostet nichts.</span><a class="btn btn-primary" href="https://wa.me/4915110526767?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Erstgespr%C3%A4ch." target="_blank" rel="noopener">Erstgespräch per WhatsApp</a></span>
+        <span class="cta"><span class="cta-tip" aria-hidden="true">Fragen kostet nichts.</span><a class="btn btn-ghost" href="mailto:kontakt@maconpro.de?subject=Anfrage%20Erstgespr%C3%A4ch&body=Hallo%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20ein%20Erstgespr%C3%A4ch.%0A%0A">Erstgespräch per E-Mail</a></span>
+      </div>
+
+      <div class="plan" aria-label="Typischer Projektverlauf in vier Phasen">
+        <div class="plan-head">
+          <p>Typischer Projektverlauf</p>
+          <p>Woche 1 &rarr; <span id="planEnd">12</span></p>
+        </div>
+        <ol>
+          <li class="plan-row plan-row--analyse">
+            <button type="button" class="plan-label"><i>01</i> Analyse</button>
+            <span class="plan-track"><span class="plan-bar" style="--from:1;--to:4;--i:0"><button type="button" class="plan-handle" style="--i:0" aria-label="Dauer der Analyse anpassen"></button></span></span>
+          </li>
+          <li class="plan-row">
+            <button type="button" class="plan-label"><i>02</i> Konzept</button>
+            <span class="plan-track"><span class="plan-bar" style="--from:4;--to:7;--i:1"><button type="button" class="plan-handle" style="--i:1" aria-label="Dauer des Konzepts anpassen"></button></span></span>
+          </li>
+          <li class="plan-row">
+            <button type="button" class="plan-label"><i>03</i> Umsetzung</button>
+            <span class="plan-track"><span class="plan-bar" style="--from:7;--to:12;--i:2"><button type="button" class="plan-handle" style="--i:2" aria-label="Dauer der Umsetzung anpassen"></button></span></span>
+          </li>
+          <li class="plan-row">
+            <button type="button" class="plan-label"><i>04</i> Übergabe</button>
+            <span class="plan-track"><span class="plan-bar" style="--from:12;--to:13;--i:3"><button type="button" class="plan-handle" style="--i:3" aria-label="Dauer der Übergabe anpassen"></button></span></span>
+          </li>
+        </ol>
+        <div class="plan-foot">
+          <p class="plan-note">Rauten ziehen verändert die Phasen · Klick auf eine Phase springt zur Beschreibung</p>
+          <p class="plan-total"><span id="planWeeks">12</span> Wochen gesamt · <button type="button" class="plan-reset" id="planReset">zurücksetzen</button></p>
+        </div>
+        <p class="plan-warn" id="planWarn" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="band" id="leistungen" data-label="Leistungen">
+    <div class="wrap">
+      <div class="shead reveal">
+        <p>Leistungen</p>
+        <h2>Drei Leistungen, die ineinandergreifen.</h2>
+      </div>
+      <div class="duo">
+        <article class="card reveal">
+          <h3>Management Consulting</h3>
+          <p>Wir schaffen die Entscheidungsgrundlage, bevor Geld gebunden wird.</p>
+          <ul>
+            <li>Standortbestimmung und Ist-Aufnahme</li>
+            <li>Prozessanalyse und Ablaufoptimierung</li>
+            <li>Organisations- und Rollenmodell</li>
+            <li>Make-or-Buy-Bewertung</li>
+            <li>Digitalisierungsfahrplan mit Prioritäten</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>Projektbegleitung</h3>
+          <p>Die Leitung bleibt bei Ihnen. Wir stützen die Stellen, an denen es klemmt.</p>
+          <ul>
+            <li>Sparring für die Projektverantwortlichen</li>
+            <li>Struktur für Ziele, Rollen und Meilensteine</li>
+            <li>Überblick über Termine, Aufgaben und Risiken</li>
+            <li>Zweite Meinung im Austausch mit Dienstleistern</li>
+            <li>Unterstützung, bis das Ergebnis im Alltag ankommt</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>Tools &amp; Automatisierung</h3>
+          <p>Wenn ein Ablauf jede Woche Zeit frisst, bauen wir das Werkzeug dafür.</p>
+          <ul>
+            <li>Aufnahme wiederkehrender Handgriffe</li>
+            <li>Automatisierung von Routineaufgaben</li>
+            <li>Eigene Web- und Mobile-Anwendungen</li>
+            <li>Anbindung bestehender Systeme und Postfächer</li>
+            <li>Betrieb auf Servern in Deutschland</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VORGEHEN -->
+  <!-- Laufende Schlagwortleiste -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-set">
+          <span>Standortbestimmung</span><b>◆</b>
+          <span>Prozessanalyse</span><b>◆</b>
+          <span>Rollenmodell</span><b>◆</b>
+          <span>Make-or-Buy</span><b>◆</b>
+          <span>Digitalisierungsfahrplan</span><b>◆</b>
+          <span>Projektbegleitung</span><b>◆</b>
+          <span>Anforderungen</span><b>◆</b>
+          <span>Lieferantensteuerung</span><b>◆</b>
+          <span>Automatisierung</span><b>◆</b>
+          <span>Eigene Werkzeuge</span><b>◆</b>
+          <span>Übergabe in den Betrieb</span><b>◆</b>
+      </div>
+      <div class="ticker-set">
+          <span>Standortbestimmung</span><b>◆</b>
+          <span>Prozessanalyse</span><b>◆</b>
+          <span>Rollenmodell</span><b>◆</b>
+          <span>Make-or-Buy</span><b>◆</b>
+          <span>Digitalisierungsfahrplan</span><b>◆</b>
+          <span>Projektbegleitung</span><b>◆</b>
+          <span>Anforderungen</span><b>◆</b>
+          <span>Lieferantensteuerung</span><b>◆</b>
+          <span>Automatisierung</span><b>◆</b>
+          <span>Eigene Werkzeuge</span><b>◆</b>
+          <span>Übergabe in den Betrieb</span><b>◆</b>
+      </div>
+    </div>
+  </div>
+
+  <section class="band band--deep" id="vorgehen" data-label="Vorgehen">
+    <div class="wrap">
+      <div class="shead reveal">
+        <p>Vorgehen</p>
+        <h2>Vier Phasen. Nach jeder wissen Sie, woran Sie sind.</h2>
+      </div>
+      <div class="stage">
+        <div class="stage-card" id="stageCard">
+          <div class="stage-meter" aria-hidden="true"><span id="stageMeter"></span></div>
+
+          <div class="stage-body">
+            <article class="stage-panel is-active" id="phase-1">
+              <p class="stage-step">01 / Analyse</p>
+              <h3>Zuhören, nachrechnen</h3>
+              <p class="stage-text">Gespräche mit den Menschen vor Ort, dazu ein Blick in Zahlen und Systeme — ohne vorgefertigte Lösung.</p>
+              <p class="out">Ergebnis: Befundbericht mit den drei größten Hebeln</p>
+            </article>
+            <article class="stage-panel" id="phase-2">
+              <p class="stage-step">02 / Konzept</p>
+              <h3>Optionen statt Empfehlung von der Stange</h3>
+              <p class="stage-text">Zwei bis drei Wege zum Ziel, jeweils mit Aufwand und Risiko beziffert. Sie entscheiden.</p>
+              <p class="out">Ergebnis: Entscheidungsvorlage und Umsetzungsplan</p>
+            </article>
+            <article class="stage-panel" id="phase-3">
+              <p class="stage-step">03 / Umsetzung</p>
+              <h3>Dranbleiben, wenn es eng wird</h3>
+              <p class="stage-text">Termine, Aufgaben und Risiken laufen an einer Stelle zusammen. Wir sind da, sobald etwas hakt.</p>
+              <p class="out">Ergebnis: Wochenüberblick und offene Punkte auf einen Blick</p>
+            </article>
+            <article class="stage-panel" id="phase-4">
+              <p class="stage-step">04 / Übergabe</p>
+              <h3>Bis es ohne uns läuft</h3>
+              <p class="stage-text">Dokumentation, Einweisung und eine Nachbetreuung, in der wir erreichbar bleiben.</p>
+              <p class="out">Ergebnis: Betriebsübergabe und Abschlussbericht</p>
+            </article>
+          </div>
+
+          <div class="stage-nav">
+            <button type="button" class="stage-dot is-on" data-go="0">01 Analyse</button>
+            <button type="button" class="stage-dot" data-go="1">02 Konzept</button>
+            <button type="button" class="stage-dot" data-go="2">03 Umsetzung</button>
+            <button type="button" class="stage-dot" data-go="3">04 Übergabe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BILDFENSTER -->
+  <section class="band" id="einblicke" data-label="Einblicke">
+    <div class="wrap shots">
+      <div class="reveal">
+        <div class="shead" style="margin-bottom:0">
+          <p>Einblicke</p>
+          <h2>Zusammenarbeit passiert am Tisch, nicht im Foliensatz.</h2>
+        </div>
+        <div class="shot-dots" id="shotDots">
+          <button type="button" class="shot-dot is-on" data-go="0" aria-label="Bild 1"></button>
+          <button type="button" class="shot-dot" data-go="1" aria-label="Bild 2"></button>
+          <button type="button" class="shot-dot" data-go="2" aria-label="Bild 3"></button>
+          <button type="button" class="shot-dot" data-go="3" aria-label="Bild 4"></button>
+        </div>
+      </div>
+
+      <div class="shot-frame" id="shotFrame">
+        <img class="is-on" fetchpriority="high" src="bilder/pitch.jpg" alt="Berater präsentiert vor einer sitzenden Gruppe in einem Besprechungsraum" data-caption="Vorstellung der Ergebnisse">
+        <img loading="lazy" src="bilder/gespraech.jpg" alt="Zwei Personen im Arbeitsgespräch an einem Tisch mit Laptop und Notizen" data-caption="Gespräch vor Ort">
+        <img loading="lazy" src="bilder/schreibtisch.jpg" alt="Notizbuch mit handgezeichnetem Zeitplan neben Laptop und Kaffeetasse" data-caption="Planung im Detail">
+        <img loading="lazy" src="bilder/flur.jpg" alt="Heller Bürogang mit Glaswänden und Maconpro-Schriftzug an der Wand" data-caption="Büro Sörgenloch">
+        <p class="shot-caption" id="shotCaption">Vorstellung der Ergebnisse</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZIELGRUPPEN -->
+  <section class="band" id="zielgruppen" data-label="Für wen">
+    <div class="wrap">
+      <div class="shead reveal">
+        <p>Für wen</p>
+        <h2>Vom ersten Team bis zur gewachsenen Organisation.</h2>
+      </div>
+      <div class="who reveal">
+        <div>
+          <h3>Start-ups</h3>
+          <p>Junge Unternehmen, die schnell liefern müssen und dafür Struktur brauchen, die nicht ausbremst.</p>
+        </div>
+        <div>
+          <h3>Mittelstand</h3>
+          <p>Unternehmen, in denen Projekte zusätzlich zum Tagesgeschäft laufen und deshalb regelmäßig liegenbleiben.</p>
+        </div>
+        <div>
+          <h3>Praxen und Einrichtungen</h3>
+          <p>Inhabergeführte Betriebe im Gesundheits- und Dienstleistungsbereich, die Abläufe digitalisieren wollen.</p>
+        </div>
+        <div>
+          <h3>IT-nahe Organisationen</h3>
+          <p>Systemhäuser und IT-Dienstleister, die zusätzliche Steuerungskapazität für Kundenprojekte brauchen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="band" id="kontakt" data-label="Kontakt">
+    <div class="wrap contact">
+      <div class="reveal">
+        <h2>Reden wir 30 Minuten über Ihr Vorhaben.</h2>
+        <p class="lede" style="margin-top:1.25rem">Kostenfrei und unverbindlich. Danach wissen Sie, ob eine Zusammenarbeit sinnvoll ist — und wenn nicht, sagen wir Ihnen das auch.</p>
+      </div>
+      <div class="reveal">
+        <dl class="dl">
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/4915110526767" target="_blank" rel="noopener">+49 151 1052 6767</a></dd></div>
+          <div><dt>E-Mail</dt><dd><a href="mailto:kontakt@maconpro.de">kontakt@maconpro.de</a></dd></div>
+          <div><dt>Telefon</dt><dd><a href="tel:+490000000000">+49 (0) 000 000 000</a></dd></div>
+          <div><dt>Anschrift</dt><dd>Maconpro GmbH<br>Schornsheimer Weg 57<br>55270 Sörgenloch</dd></div>
+        </dl>
+        <div class="actions">
+          <span class="cta"><span class="cta-tip" aria-hidden="true">Fragen kostet nichts.</span><a class="btn btn-primary" href="https://wa.me/4915110526767?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Erstgespr%C3%A4ch." target="_blank" rel="noopener">Erstgespräch per WhatsApp</a></span>
+          <span class="cta"><span class="cta-tip" aria-hidden="true">Fragen kostet nichts.</span><a class="btn btn-ghost" href="mailto:kontakt@maconpro.de?subject=Anfrage%20Erstgespr%C3%A4ch&body=Hallo%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20ein%20Erstgespr%C3%A4ch.%0A%0A">Erstgespräch per E-Mail</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© <span id="jahr">2026</span> Maconpro GmbH</p>
+    <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('jahr').textContent = new Date().getFullYear();
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 3) * 70 + 'ms';
+  io.observe(el);
+});
+
+/* ---------- Spruch am Erstgespräch-Button ---------- */
+const sprueche = [
+  'Fragen kostet nichts. Nicht fragen schon.',
+  'Kein Verkaufsgespräch. Ein Gespräch.',
+  'Die Nachricht ist schon getippt. Fehlt nur Senden.',
+  '30 Minuten, unverbindlich, ohne Foliensatz.',
+  'Ein Klick spart drei Wochen Grübeln.',
+  'Passt nicht? Sagen wir Ihnen ehrlich.'
+];
+
+document.querySelectorAll('.cta').forEach((cta) => {
+  const tip = cta.querySelector('.cta-tip');
+  if (!tip) return;
+  let letzter = -1;
+  const zeigen = () => {
+    let n;
+    do { n = Math.floor(Math.random() * sprueche.length); } while (n === letzter);
+    letzter = n;
+    tip.textContent = sprueche[n];
+  };
+  zeigen();
+  cta.addEventListener('pointerenter', zeigen);
+  cta.addEventListener('focusin', zeigen);
+});
+
+/* ---------- Projektplan: klickbar und ziehbar ---------- */
+const BASIS = [3, 3, 5, 1];          // Wochen je Phase
+const WOCHEN_MAX = 12;
+let dauer = BASIS.slice();
+
+const planRows   = Array.from(document.querySelectorAll('.plan-row'));
+const planWeeks  = document.getElementById('planWeeks');
+const planEnd    = document.getElementById('planEnd');
+const planWarn   = document.getElementById('planWarn');
+const planReset  = document.getElementById('planReset');
+
+function planZeichnen() {
+  let start = 1;
+  planRows.forEach((row, i) => {
+    const bar = row.querySelector('.plan-bar');
+    bar.style.setProperty('--from', start);
+    bar.style.setProperty('--to', start + dauer[i]);
+    start += dauer[i];
+  });
+
+  const summe = dauer.reduce((a, b) => a + b, 0);
+  if (planWeeks) planWeeks.textContent = summe;
+  if (planEnd) planEnd.textContent = summe;
+
+  let hinweis = '';
+  if (dauer[0] < BASIS[0]) {
+    hinweis = 'Analyse verkürzt. Was hier nicht auffällt, taucht in der Umsetzung wieder auf — meist teurer als die gesparten Wochen.';
+  } else if (dauer[2] < BASIS[2]) {
+    hinweis = 'Wenig Zeit für die Umsetzung. Machbar, wenn der Umfang mitschrumpft. Sonst wird die Übergabe zum Engpass.';
+  } else if (dauer[3] < BASIS[3]) {
+    hinweis = 'Ohne Übergabe endet das Projekt mit dem Go-live, nicht mit dem Betrieb.';
+  } else if (dauer[0] > BASIS[0]) {
+    hinweis = 'Mehr Zeit für die Analyse. Erfahrungsgemäß die Wochen, die sich am ehesten auszahlen.';
+  }
+
+  if (planWarn) {
+    planWarn.textContent = hinweis;
+    planWarn.hidden = !hinweis;
+  }
+}
+
+function dauerSetzen(i, wert) {
+  const andere = dauer.reduce((a, b, j) => (j === i ? a : a + b), 0);
+  dauer[i] = Math.max(1, Math.min(wert, WOCHEN_MAX - andere));
+  planZeichnen();
+}
+
+function zuPhase(i) {
+  const block = document.getElementById('vorgehen');
+  if (!block) return;
+  block.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'center' });
+  stageZeige(i);
+  stageStart();
+}
+
+planRows.forEach((row, i) => {
+  const griff = row.querySelector('.plan-handle');
+  const track = row.querySelector('.plan-track');
+  const label = row.querySelector('.plan-label');
+  let aktiv = false, startX = 0, startDauer = 0, gezogen = false;
+
+  if (label) label.addEventListener('click', () => zuPhase(i));
+  if (track) track.addEventListener('click', (e) => {
+    if (e.target.closest('.plan-handle') || gezogen) return;
+    zuPhase(i);
+  });
+
+  if (!griff) return;
+
+  griff.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    aktiv = true;
+    gezogen = false;
+    startX = e.clientX;
+    startDauer = dauer[i];
+    griff.setPointerCapture(e.pointerId);
+  });
+
+  griff.addEventListener('pointermove', (e) => {
+    if (!aktiv) return;
+    const spalte = track.getBoundingClientRect().width / WOCHEN_MAX;
+    const schritte = Math.round((e.clientX - startX) / spalte);
+    if (schritte !== 0) gezogen = true;
+    dauerSetzen(i, startDauer + schritte);
+  });
+
+  const beenden = () => {
+    aktiv = false;
+    setTimeout(() => { gezogen = false; }, 50);
+  };
+  griff.addEventListener('pointerup', beenden);
+  griff.addEventListener('pointercancel', beenden);
+
+  griff.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { dauerSetzen(i, dauer[i] + 1); e.preventDefault(); }
+    if (e.key === 'ArrowLeft')  { dauerSetzen(i, dauer[i] - 1); e.preventDefault(); }
+  });
+});
+
+if (planReset) planReset.addEventListener('click', () => { dauer = BASIS.slice(); planZeichnen(); });
+planZeichnen();
+
+/* ---------- Fortschrittsleiste ---------- */
+const progress = document.getElementById('progress');
+const sectionLabel = document.getElementById('sectionLabel');
+const sections = Array.from(document.querySelectorAll('main section[data-label]'));
+const navLinks = Array.from(document.querySelectorAll('.topnav a'));
+
+function fortschritt() {
+  const doc = document.documentElement;
+  const max = doc.scrollHeight - doc.clientHeight;
+  if (progress) progress.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + '%';
+
+  const grenze = doc.clientHeight * 0.35;
+  let aktuell = sections[0];
+  for (const s of sections) {
+    if (s.getBoundingClientRect().top <= grenze) aktuell = s;
+  }
+  if (!aktuell) return;
+  if (sectionLabel) sectionLabel.textContent = aktuell.dataset.label;
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + aktuell.id));
+}
+
+/* ---------- Bildfenster: wechselt von selbst ---------- */
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+let queued = false;
+
+const shotFrame = document.getElementById('shotFrame');
+const shotImgs = shotFrame ? Array.from(shotFrame.querySelectorAll('img')) : [];
+const shotDots = Array.from(document.querySelectorAll('.shot-dot'));
+const shotCaption = document.getElementById('shotCaption');
+const SHOT_MS = 5000;
+let shotIdx = 0;
+let shotTimer = null;
+
+function shotZeige(i) {
+  if (!shotImgs.length) return;
+  shotIdx = (i + shotImgs.length) % shotImgs.length;
+  shotImgs.forEach((el, n) => el.classList.toggle('is-on', n === shotIdx));
+  shotDots.forEach((el, n) => el.classList.toggle('is-on', n === shotIdx));
+  if (shotCaption) shotCaption.textContent = shotImgs[shotIdx].dataset.caption || '';
+}
+
+function shotStart() {
+  shotStop();
+  if (reduce.matches || !shotImgs.length) return;
+  shotTimer = setInterval(() => shotZeige(shotIdx + 1), SHOT_MS);
+}
+
+function shotStop() {
+  if (shotTimer) { clearInterval(shotTimer); shotTimer = null; }
+}
+
+if (shotFrame) {
+  shotDots.forEach((dot, n) => dot.addEventListener('click', () => { shotZeige(n); shotStart(); }));
+  shotFrame.addEventListener('pointerenter', shotStop);
+  shotFrame.addEventListener('pointerleave', shotStart);
+
+  const shotIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => e.isIntersecting ? shotStart() : shotStop());
+  }, { threshold: 0.3 });
+  shotIo.observe(shotFrame);
+}
+
+function tick() {
+  fortschritt();
+  queued = false;
+}
+
+function onScroll() {
+  if (!queued) { queued = true; requestAnimationFrame(tick); }
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll);
+tick();
+
+/* ---------- Vorgehen: schwebendes Fenster durchlaufen lassen ---------- */
+const stageCard = document.getElementById('stageCard');
+const stageMeter = document.getElementById('stageMeter');
+const stagePanels = Array.from(document.querySelectorAll('.stage-panel'));
+const stageDots = Array.from(document.querySelectorAll('.stage-dot'));
+const STAGE_MS = 6000;
+let stageIdx = 0;
+let stageTimer = null;
+
+function stageZeige(i) {
+  if (!stagePanels.length) return;
+  stageIdx = (i + stagePanels.length) % stagePanels.length;
+  stagePanels.forEach((el, n) => el.classList.toggle('is-active', n === stageIdx));
+  stageDots.forEach((el, n) => el.classList.toggle('is-on', n === stageIdx));
+  meterNeu();
+}
+
+function meterNeu() {
+  if (!stageMeter || reduce.matches) return;
+  stageMeter.style.animation = 'none';
+  void stageMeter.offsetWidth;                       // Neustart erzwingen
+  stageMeter.style.animation = 'stage-fill ' + STAGE_MS + 'ms linear forwards';
+}
+
+function stageStart() {
+  stageStop();
+  if (reduce.matches) return;
+  meterNeu();
+  stageTimer = setInterval(() => stageZeige(stageIdx + 1), STAGE_MS);
+}
+
+function stageStop() {
+  if (stageTimer) { clearInterval(stageTimer); stageTimer = null; }
+}
+
+if (stageCard) {
+  stageDots.forEach((dot, n) => {
+    dot.addEventListener('click', () => { stageZeige(n); stageStart(); });
+  });
+
+  // Beim Lesen nicht weiterspringen
+  stageCard.addEventListener('pointerenter', () => {
+    stageStop();
+    if (stageMeter) stageMeter.style.animationPlayState = 'paused';
+  });
+  stageCard.addEventListener('pointerleave', () => {
+    if (stageMeter) stageMeter.style.animationPlayState = 'running';
+    stageStart();
+  });
+  stageCard.addEventListener('focusin', stageStop);
+
+  // Erst laufen lassen, wenn das Fenster sichtbar ist
+  const stageIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => e.isIntersecting ? stageStart() : stageStop());
+  }, { threshold: 0.35 });
+  stageIo.observe(stageCard);
+}
+
+/* ---------- Lockspruch im Tab-Titel, wenn man wegklickt ---------- */
+const eigenerTitel = document.title;
+const rueckkehrSprueche = [
+  'Noch hier?',
+  'Das Erstgespräch wartet noch.',
+  'Kurz weg? Wir auch gleich.',
+  'Maconpro — später weiterlesen?',
+  'Ein Klick zum Erstgespräch.'
+];
+let letzterTitel = -1;
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    let n;
+    do { n = Math.floor(Math.random() * rueckkehrSprueche.length); } while (n === letzterTitel);
+    letzterTitel = n;
+    document.title = rueckkehrSprueche[n];
+  } else {
+    document.title = eigenerTitel;
+  }
+});
+</script>
+
+</body>
+</html>
